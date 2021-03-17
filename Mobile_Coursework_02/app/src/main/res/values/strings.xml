@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Mobile_Coursework_02</string>
+    <string name="registerMovie">Register Movie</string>
+    <string name="displayMovies">Display Movies</string>
+    <string name="favourites">Favourites</string>
+    <string name="editMovies">Edit Movie</string>
+    <string name="search">Search</string>
+    <string name="ratings">Ratings</string>
+    <string name="save">Save</string>
+    <string name="titileOne">Register Movie</string>
+    <string name="movieTitle">Title of the movie : </string>
+    <string name="editTxtMovieTitle">Enter movie title</string>
+    <string name="theYear">The year : </string>
+    <string name="editTxtMovieYear">Enter movie year</string>
+    <string name="theDirector">The Director : </string>
+    <string name="editTxtMovieDirector">Enter director</string>
+    <string name="listOfActors">List of actors/actress : </string>
+    <string name="editTxtMovieActors">Enter actors/actress : </string>
+    <string name="ratingsLabel">Enter ratings : </string>
+    <string name="review">Reviews : </string>
+    <string name="editReview">Enter your reviews</string>
+</resources>
