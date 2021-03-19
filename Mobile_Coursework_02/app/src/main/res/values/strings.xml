@@ -19,4 +19,8 @@
     <string name="ratingsLabel">Enter ratings : </string>
     <string name="review">Reviews : </string>
     <string name="editReview">Enter your reviews</string>
+    <string name="button_name">Add to favourites</string>
+    <string name="article_text"> </string>
+    <string name="titleTwo">Display Movies</string>
+    <string name="addToFvouritesBtn">Add to favourites</string>
 </resources>

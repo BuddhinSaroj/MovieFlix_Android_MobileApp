@@ -12,14 +12,16 @@
         android:layout_height="929dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/background_image" />
 
     <Button
         android:id="@+id/registerMovieBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button_shapes"
         android:text="@string/registerMovie"
         android:textStyle="normal|bold"
         android:onClick="registerMovie"
@@ -32,9 +34,11 @@
 
     <Button
         android:id="@+id/displayMovieBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button_shapes"
         android:text="@string/displayMovies"
+        android:onClick="displayMovies"
         android:textStyle="normal|bold"
         app:backgroundTint="#2196F3"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -45,8 +49,9 @@
 
     <Button
         android:id="@+id/favouritesBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button_shapes"
         android:text="@string/favourites"
         android:textStyle="normal|bold"
         app:backgroundTint="#2196F3"
@@ -59,43 +64,47 @@
 
     <Button
         android:id="@+id/editMovieBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button_shapes"
         android:text="@string/editMovies"
         android:textStyle="normal|bold"
         app:backgroundTint="#2196F3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.529" />
+        app:layout_constraintVertical_bias="0.552" />
 
     <Button
         android:id="@+id/searchBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button_shapes"
         android:text="@string/search"
         android:textStyle="normal|bold"
         app:backgroundTint="#2196F3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.652" />
+        app:layout_constraintVertical_bias="0.679" />
 
     <Button
         android:id="@+id/ratingBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button_shapes"
         android:text="@string/ratings"
         android:textStyle="normal|bold"
         app:backgroundTint="#2196F3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.775" />
+        app:layout_constraintVertical_bias="0.81" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

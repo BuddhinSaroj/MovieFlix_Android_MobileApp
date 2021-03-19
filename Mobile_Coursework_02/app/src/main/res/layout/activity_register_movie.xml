@@ -10,17 +10,18 @@
         android:id="@+id/titileOne"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/bree_serif"
         android:gravity="center"
         android:text="@string/titileOne"
         android:textColor="#9C27B0"
-        android:textSize="25sp"
+        android:textSize="36sp"
         android:textStyle="normal|bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.086" />
+        app:layout_constraintVertical_bias="0.048" />
 
     <TextView
         android:id="@+id/movieTitle"
@@ -198,11 +199,13 @@
 
     <Button
         android:id="@+id/saveBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/save"
-        app:backgroundTint="#009688"
+        android:layout_width="145dp"
+        android:layout_height="48dp"
+        android:background="@drawable/button_shapes"
         android:onClick="saveToDb"
+        android:text="@string/save"
+        android:textStyle="normal|bold"
+        app:backgroundTint="#009688"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.437"

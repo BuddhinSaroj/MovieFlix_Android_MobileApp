@@ -2,8 +2,10 @@ package com.example.mobile_coursework_02;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -66,6 +68,15 @@ public class DbHandler extends SQLiteOpenHelper {
 
         //save to table
         sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
-        sqLiteDatabase.close();
+        //sqLiteDatabase.close();
+    }
+
+    public Cursor displayAllMovies(){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME   ; //+" WHERE " + MOVIE_TITLE;
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        return cursor;
     }
 }
