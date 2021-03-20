@@ -101,4 +101,11 @@ public class DbHandler extends SQLiteOpenHelper {
 
         return cursor;
     }
+
+    public void removeFromFavourites(String movie){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(FAVOURITES,0);
+        db.update(TABLE_NAME,values,MOVIE_TITLE+" =?",new String[]{movie});
+    }
 }

@@ -27,6 +27,9 @@
         android:id="@+id/listView"
         android:layout_width="367dp"
         android:layout_height="452dp"
+        android:choiceMode="multipleChoice"
+        android:focusable="auto"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,6 +42,7 @@
         android:layout_height="50dp"
         android:background="@drawable/button_shapes"
         android:fontFamily="@font/bree_serif"
+        android:onClick="removeFromFavourites"
         android:text="@string/save"
         android:textSize="20sp"
         android:textStyle="normal|bold"
