@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mobile_Coursework_02</string>
+    <string name="app_name"></string>
     <string name="registerMovie">Register Movie</string>
     <string name="displayMovies">Display Movies</string>
     <string name="favourites">Favourites</string>
@@ -23,4 +23,6 @@
     <string name="article_text"> </string>
     <string name="titleTwo">Display Movies</string>
     <string name="addToFvouritesBtn">Add to favourites</string>
+    <string name="mainPgTitle">MovieFlix</string>
+    <string name="titleThree">Favourite Movies</string>
 </resources>

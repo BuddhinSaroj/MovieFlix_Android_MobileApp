@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,7 +21,6 @@ public class DisplayMovies extends AppCompatActivity {
     private ListView listView;
     ArrayList<String> arrayList =new ArrayList<>();
     Cursor cursor;
-    String favourites;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,21 +44,29 @@ public class DisplayMovies extends AppCompatActivity {
         //------------------ sort arrayList -------------------------------
             Collections.sort(arrayList);
         //------------------ set adapter ----------------------------------
-            ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_single_choice, arrayList);
+            ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_multiple_choice, arrayList);
             listView.setAdapter(listAdapter);
-
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                favourites = (String) parent.getItemAtPosition(position);
-                System.out.println(favourites);
-                //text.setText(goingToEdit);
-            }
-        });
     }
 
 
 
     public void addFavourites(View view) {
+        int x = 0;
+
+        SparseBooleanArray checked = listView.getCheckedItemPositions();//from StackOverFlow
+
+        for (int i = 0 ; i < listView.getCount() ; i++){
+            if (checked.get(i)){
+                x++;
+                String movies = (String) listView.getItemAtPosition(i);//get checked movies positions from listView
+                System.out.println(movies);
+                dbHandler.addFavourites(movies);//movies variable passed to dbHandler class as a parameter.
+            }
+        }
+        if (x == 0){
+            Toast.makeText(this, "Please select a movie to add favourites", Toast.LENGTH_LONG).show();
+        }else {
+            Toast.makeText(this, "Added to favourites", Toast.LENGTH_LONG).show();
+        }
     }
 }

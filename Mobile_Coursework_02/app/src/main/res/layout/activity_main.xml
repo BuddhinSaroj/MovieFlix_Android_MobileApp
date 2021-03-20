@@ -4,107 +4,123 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_image"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="560dp"
-        android:layout_height="929dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/background_image" />
 
     <Button
         android:id="@+id/registerMovieBtn"
-        android:layout_width="220dp"
+        android:layout_width="180dp"
         android:layout_height="60dp"
         android:background="@drawable/button_shapes"
-        android:text="@string/registerMovie"
-        android:textStyle="normal|bold"
         android:onClick="registerMovie"
-        app:backgroundTint="#2196F3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.157" />
-
-    <Button
-        android:id="@+id/displayMovieBtn"
-        android:layout_width="220dp"
-        android:layout_height="60dp"
-        android:background="@drawable/button_shapes"
-        android:text="@string/displayMovies"
-        android:onClick="displayMovies"
+        android:text="@string/registerMovie"
+        android:fontFamily="@font/bree_serif"
         android:textStyle="normal|bold"
-        app:backgroundTint="#2196F3"
+        app:backgroundTint="#4CAF50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.289" />
-
-    <Button
-        android:id="@+id/favouritesBtn"
-        android:layout_width="220dp"
-        android:layout_height="60dp"
-        android:background="@drawable/button_shapes"
-        android:text="@string/favourites"
-        android:textStyle="normal|bold"
-        app:backgroundTint="#2196F3"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.417" />
+        app:layout_constraintVertical_bias="0.323" />
 
     <Button
         android:id="@+id/editMovieBtn"
-        android:layout_width="220dp"
+        android:layout_width="180dp"
         android:layout_height="60dp"
         android:background="@drawable/button_shapes"
         android:text="@string/editMovies"
+        android:fontFamily="@font/bree_serif"
         android:textStyle="normal|bold"
-        app:backgroundTint="#2196F3"
+        app:backgroundTint="#4CAF50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.552" />
+        app:layout_constraintVertical_bias="0.503" />
 
     <Button
-        android:id="@+id/searchBtn"
-        android:layout_width="220dp"
+        android:id="@+id/displayMovieBtn"
+        android:layout_width="180dp"
         android:layout_height="60dp"
         android:background="@drawable/button_shapes"
-        android:text="@string/search"
+        android:onClick="displayMovies"
+        android:text="@string/displayMovies"
+        android:fontFamily="@font/bree_serif"
         android:textStyle="normal|bold"
-        app:backgroundTint="#2196F3"
+        app:backgroundTint="#4CAF50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.679" />
+        app:layout_constraintVertical_bias="0.323" />
 
     <Button
         android:id="@+id/ratingBtn"
-        android:layout_width="220dp"
+        android:layout_width="180dp"
         android:layout_height="60dp"
         android:background="@drawable/button_shapes"
         android:text="@string/ratings"
+        android:fontFamily="@font/bree_serif"
         android:textStyle="normal|bold"
-        app:backgroundTint="#2196F3"
+        app:backgroundTint="#4CAF50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
+        app:layout_constraintVertical_bias="0.682" />
+
+    <Button
+        android:id="@+id/favouritesBtn"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button_shapes"
+        android:text="@string/favourites"
+        android:fontFamily="@font/bree_serif"
+        android:textStyle="normal|bold"
+        app:backgroundTint="#4CAF50"
+        android:onClick="favoriteMovies"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.503" />
+
+    <Button
+        android:id="@+id/searchBtn"
+        android:layout_width="180dp"
+        android:layout_height="60dp"
+        android:background="@drawable/button_shapes"
+        android:text="@string/search"
+        android:fontFamily="@font/bree_serif"
+        android:textStyle="normal|bold"
+        app:backgroundTint="#4CAF50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.682" />
+
+    <TextView
+        android:id="@+id/mainPgTitle"
+        android:layout_width="317dp"
+        android:layout_height="67dp"
+        android:fontFamily="@font/bree_serif"
+        android:gravity="center"
+        android:text="@string/mainPgTitle"
+        android:textColor="#00BCD4"
+        android:textSize="40sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.053" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

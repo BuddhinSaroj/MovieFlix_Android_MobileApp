@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 
 public class DbHandler extends SQLiteOpenHelper {
 
-    private static final int VERSION = 2; //version is used to update and recreate database tables
+    private static final int VERSION =4; //version is used to update and recreate database tables
     private static final String DB_NAME = "Movie";
     private static final String TABLE_NAME = "Movie_table";
 
@@ -23,8 +23,9 @@ public class DbHandler extends SQLiteOpenHelper {
     public static final String MOVIE_ACTORS = "Actors";
     public static final String MOVIE_RATINGS = "Ratings";
     public static final String MOVIE_REVIEWS = "Reviews";
+    public static final String FAVOURITES = "Favourites";
 
-    private static String [] FROM = { /*ID ,*/ MOVIE_TITLE , MOVIE_YEAR , MOVIE_DIRECTOR , MOVIE_ACTORS,MOVIE_RATINGS,MOVIE_REVIEWS};
+    private static String [] FROM = { /*ID ,*/ MOVIE_TITLE , MOVIE_YEAR , MOVIE_DIRECTOR , MOVIE_ACTORS,MOVIE_RATINGS,MOVIE_REVIEWS,FAVOURITES};
     private static String ORDER_BY = /*ID +*/ " DESC ";
 
     public DbHandler(@Nullable Context context) {
@@ -40,7 +41,8 @@ public class DbHandler extends SQLiteOpenHelper {
                 + DbHandler.MOVIE_DIRECTOR + " TEXT,"
                 + DbHandler.MOVIE_ACTORS + " TEXT,"
                 + DbHandler.MOVIE_RATINGS + " TEXT,"
-                + DbHandler.MOVIE_REVIEWS + " TEXT)";
+                + DbHandler.MOVIE_REVIEWS + " TEXT,"
+                + DbHandler.FAVOURITES + " TEXT)";
 
         db.execSQL(SQL_CREATE_TABLES);//run the query and create the database
 
@@ -65,6 +67,7 @@ public class DbHandler extends SQLiteOpenHelper {
         contentValues.put(MOVIE_ACTORS,movies.getListOfActors());
         contentValues.put(MOVIE_RATINGS,movies.getRatings());
         contentValues.put(MOVIE_REVIEWS,movies.getReview());
+        contentValues.put(FAVOURITES,0);
 
         //save to table
         sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
@@ -74,9 +77,28 @@ public class DbHandler extends SQLiteOpenHelper {
     public Cursor displayAllMovies(){
         SQLiteDatabase db = this.getReadableDatabase();
 
-        String selectQuery = "SELECT  * FROM " + TABLE_NAME   ; //+" WHERE " + MOVIE_TITLE;
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME   ;
 
         Cursor cursor = db.rawQuery(selectQuery, null);
+        return cursor;
+    }
+
+    public void addFavourites(String movie){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(FAVOURITES,1);
+        db.update(TABLE_NAME,values,MOVIE_TITLE+" =?",new String[]{movie});
+    }
+
+    public Cursor viewFavourites(){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selectQuery = "SELECT  * FROM " + TABLE_NAME  +" WHERE FAVOURITES = 1";
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        //Cursor cursor =  db.rawQuery("select * from " + DATABASE_TABLE_EHS + " where " + TASK_ID + "='" + taskid + "'" , null);
+
         return cursor;
     }
 }
