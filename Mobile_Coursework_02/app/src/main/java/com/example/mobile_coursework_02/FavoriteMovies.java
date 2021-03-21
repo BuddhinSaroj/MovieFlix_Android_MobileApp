@@ -36,7 +36,7 @@ public class FavoriteMovies extends AppCompatActivity {
             return;
         }
         while (cursor.moveToNext()) {
-            arrayList.add(cursor.getString(0));
+            arrayList.add(cursor.getString(1));
         }
         //------------------ sort arrayList -------------------------------
         Collections.sort(arrayList);

@@ -11,12 +11,12 @@ import androidx.annotation.Nullable;
 
 public class DbHandler extends SQLiteOpenHelper {
 
-    private static final int VERSION =4; //version is used to update and recreate database tables
+    private static final int VERSION =5; //version is used to update and recreate database tables
     private static final String DB_NAME = "Movie";
     private static final String TABLE_NAME = "Movie_table";
 
     //Column names
-    //private static final String ID = "id";
+    private static final String ID = "id";
     public static final String MOVIE_TITLE = "Title";
     public static final String MOVIE_YEAR = "Year";
     public static final String MOVIE_DIRECTOR = "Director";
@@ -35,8 +35,8 @@ public class DbHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {//onCreate method used to create tables
         String SQL_CREATE_TABLES = "CREATE TABLE " + DbHandler.TABLE_NAME + " ("
-                //+ DbHandler.ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + DbHandler.MOVIE_TITLE + " TEXT PRIMARY KEY,"
+                + DbHandler.ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + DbHandler.MOVIE_TITLE + " TEXT ,"//PRIMARY KEY,"
                 + DbHandler.MOVIE_YEAR + " TEXT,"
                 + DbHandler.MOVIE_DIRECTOR + " TEXT,"
                 + DbHandler.MOVIE_ACTORS + " TEXT,"
@@ -97,8 +97,6 @@ public class DbHandler extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        //Cursor cursor =  db.rawQuery("select * from " + DATABASE_TABLE_EHS + " where " + TASK_ID + "='" + taskid + "'" , null);
-
         return cursor;
     }
 
@@ -107,5 +105,24 @@ public class DbHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(FAVOURITES,0);
         db.update(TABLE_NAME,values,MOVIE_TITLE+" =?",new String[]{movie});
+    }
+
+    public Cursor getSingleMovie(String movie){
+        SQLiteDatabase db = getWritableDatabase();
+
+        Cursor cursor = db.query(TABLE_NAME,new String[]{MOVIE_TITLE,MOVIE_YEAR,MOVIE_DIRECTOR,MOVIE_ACTORS, MOVIE_RATINGS,MOVIE_REVIEWS,FAVOURITES},
+                MOVIE_TITLE + "= ?",new String[]{String.valueOf(movie)}
+                ,null,null,null);
+
+
+        return cursor;
+
+    }
+
+    public void editMovie(int position){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(FAVOURITES,1);
+        db.update(TABLE_NAME,values,MOVIE_TITLE+" =?",new String[]{String.valueOf(position)});
     }
 }

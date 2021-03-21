@@ -32,14 +32,14 @@ public class DisplayMovies extends AppCompatActivity {
     }
 
     public void viewAllData(){
-        Cursor cursor = dbHandler.displayAllMovies();
+        //Cursor cursor = dbHandler.displayAllMovies();
 
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "NO DATA AVAILABLE", Toast.LENGTH_LONG).show();
             return;
         }
         while (cursor.moveToNext()) {
-            arrayList.add(cursor.getString(0));
+            arrayList.add(cursor.getString(1));
         }
         //------------------ sort arrayList -------------------------------
             Collections.sort(arrayList);

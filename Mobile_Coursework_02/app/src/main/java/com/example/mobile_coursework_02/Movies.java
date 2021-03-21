@@ -1,12 +1,14 @@
 package com.example.mobile_coursework_02;
 
 public class Movies {
+    private int id;
     private String titleOfTheMovie;
     private String theYear;
     private String theDirector;
     private String listOfActors;
     private String ratings;
     private String review;
+    private int Favourites;
 
     public Movies(String titleOfTheMovie, String theYear, String theDirector, String listOfActors, String ratings, String review) {
         this.titleOfTheMovie = titleOfTheMovie;
@@ -15,6 +17,35 @@ public class Movies {
         this.listOfActors = listOfActors;
         this.ratings = ratings;
         this.review = review;
+    }
+
+    public Movies(String titleOfTheMovie, String theYear, String theDirector, String listOfActors, String ratings, String review, int favourites) {
+        this.titleOfTheMovie = titleOfTheMovie;
+        this.theYear = theYear;
+        this.theDirector = theDirector;
+        this.listOfActors = listOfActors;
+        this.ratings = ratings;
+        this.review = review;
+        this.Favourites = favourites;
+    }
+
+    public Movies(int id, String titleOfTheMovie, String theYear, String theDirector, String listOfActors, String ratings, String review, int favourites) {
+        this.id = id;
+        this.titleOfTheMovie = titleOfTheMovie;
+        this.theYear = theYear;
+        this.theDirector = theDirector;
+        this.listOfActors = listOfActors;
+        this.ratings = ratings;
+        this.review = review;
+        Favourites = favourites;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitleOfTheMovie() {
@@ -63,5 +94,13 @@ public class Movies {
 
     public void setReview(String review) {
         this.review = review;
+    }
+
+    public int getFavourites() {
+        return Favourites;
+    }
+
+    public void setFavourites(int favourites) {
+        Favourites = favourites;
     }
 }

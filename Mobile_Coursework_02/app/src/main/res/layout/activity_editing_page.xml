@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".RegisterMovie">
+    tools:context=".EditingPage">
 
     <TextView
         android:id="@+id/titileOne"
@@ -13,7 +12,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/bree_serif"
         android:gravity="center"
-        android:text="@string/titileOne"
+        android:text="@string/titleFive"
         android:textColor="#9C27B0"
         android:textSize="36sp"
         android:textStyle="normal|bold"
@@ -25,7 +24,7 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <EditText
-        android:id="@+id/editTxtMovieActors1"
+        android:id="@+id/editTxtMovieActors"
         android:layout_width="192dp"
         android:layout_height="113dp"
         android:ems="10"
@@ -70,7 +69,7 @@
         app:layout_constraintVertical_bias="0.41" />
 
     <EditText
-        android:id="@+id/editTxtMovieRatings1"
+        android:id="@+id/editTxtMovieRatings"
         android:layout_width="201dp"
         android:layout_height="43dp"
         android:ems="10"
@@ -100,7 +99,7 @@
         app:layout_constraintVertical_bias="0.169" />
 
     <EditText
-        android:id="@+id/editTxtMovieDirector1"
+        android:id="@+id/editTxtMovieDirector"
         android:layout_width="201dp"
         android:layout_height="43dp"
         android:ems="10"
@@ -130,7 +129,7 @@
         app:layout_constraintVertical_bias="0.7" />
 
     <EditText
-        android:id="@+id/editTxtMovieYear1"
+        android:id="@+id/editTxtMovieYear"
         android:layout_width="201dp"
         android:layout_height="43dp"
         android:ems="10"
@@ -145,7 +144,7 @@
         app:layout_constraintVertical_bias="0.286" />
 
     <EditText
-        android:id="@+id/editTxtMovieTitle1"
+        android:id="@+id/editTxtMovieTitle"
         android:layout_width="201dp"
         android:layout_height="43dp"
         android:ems="10"
@@ -160,7 +159,7 @@
         app:layout_constraintVertical_bias="0.164" />
 
     <EditText
-        android:id="@+id/editTxtMovieReviews1"
+        android:id="@+id/editTxtMovieReviews"
         android:layout_width="201dp"
         android:layout_height="43dp"
         android:ems="10"
@@ -210,8 +209,8 @@
         android:layout_height="50dp"
         android:background="@drawable/button_shapes"
         android:fontFamily="@font/bree_serif"
-        android:onClick="saveToDb"
-        android:text="@string/save"
+        android:onClick="updateDb"
+        android:text="@string/updateBtn"
         android:textSize="20sp"
         android:textStyle="normal|bold"
         app:backgroundTint="#009688"

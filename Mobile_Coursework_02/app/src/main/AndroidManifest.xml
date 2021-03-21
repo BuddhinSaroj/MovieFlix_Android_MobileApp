@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mobile_Coursework_02">
-        <activity android:name=".FavoriteMovies"></activity>
+        <activity android:name=".EditingPage"></activity>
+        <activity android:name=".EditMovies" />
+        <activity android:name=".FavoriteMovies" />
         <activity android:name=".DisplayMovies" />
         <activity android:name=".RegisterMovie" />
         <activity android:name=".MainActivity">

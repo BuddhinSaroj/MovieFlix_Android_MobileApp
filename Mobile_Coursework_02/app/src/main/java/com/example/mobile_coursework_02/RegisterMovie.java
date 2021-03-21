@@ -19,12 +19,12 @@ public class RegisterMovie extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_movie);
-        movieTitle = findViewById(R.id.editTxtMovieTitle);
-        theYear = findViewById(R.id.editTxtMovieYear);
-        theDirector = findViewById(R.id.editTxtMovieDirector);
-        listOfActors = findViewById(R.id.editTxtMovieActors);
-        ratings = findViewById(R.id.editTxtMovieRatings);
-        reviews = findViewById(R.id.editTxtMovieReviews);
+        movieTitle = findViewById(R.id.editTxtMovieTitle1);
+        theYear = findViewById(R.id.editTxtMovieYear1);
+        theDirector = findViewById(R.id.editTxtMovieDirector1);
+        listOfActors = findViewById(R.id.editTxtMovieActors1);
+        ratings = findViewById(R.id.editTxtMovieRatings1);
+        reviews = findViewById(R.id.editTxtMovieReviews1);
         dbHandler = new DbHandler(context);//need to pass Context object to DbHandler class
     }
 
@@ -38,8 +38,13 @@ public class RegisterMovie extends AppCompatActivity {
         if(titleOfTheMovie.equalsIgnoreCase("")){
             Toast toast = Toast.makeText(this, "Please fill title of the movie", Toast.LENGTH_SHORT);
             toast.show();
-        }else if (movieYear.equalsIgnoreCase("")){
-            Toast toast = Toast.makeText(this, "Please fill year of the movie", Toast.LENGTH_SHORT);
+        }else if (movieYear.equalsIgnoreCase("")|| Integer.parseInt(movieYear) < 1985){
+            Toast toast;
+            if (movieYear.equalsIgnoreCase("")){
+                toast = Toast.makeText(this, "Please fill year of the movie", Toast.LENGTH_SHORT);
+            }else {
+                toast = Toast.makeText(this, "Please fill year over 1985", Toast.LENGTH_SHORT);
+            }
             toast.show();
         }else if (movieDirector.equalsIgnoreCase("")){
             Toast toast = Toast.makeText(this, "Please fill director of the movie", Toast.LENGTH_SHORT);
@@ -48,9 +53,15 @@ public class RegisterMovie extends AppCompatActivity {
             Toast toast = Toast.makeText(this, "Please fill actors/actress of the movie", Toast.LENGTH_SHORT);
             toast.show();
         }
-        else if (movieRatings.equalsIgnoreCase("")){
-            Toast toast = Toast.makeText(this, "Please fill ratings of the movie", Toast.LENGTH_SHORT);
+        else if (movieRatings.equalsIgnoreCase("") || Integer.parseInt(movieRatings) <= 0 || Integer.parseInt(movieRatings) > 10){
+            Toast toast;
+            if (movieRatings.equalsIgnoreCase("")){
+                toast = Toast.makeText(this, "Please fill ratings of the movie", Toast.LENGTH_SHORT);
+            }else {
+                toast = Toast.makeText(this, "Enter ratings between 1-10", Toast.LENGTH_SHORT);
+            }
             toast.show();
+
         }else if (movieReviews.equalsIgnoreCase("")){
             Toast toast = Toast.makeText(this, "Please fill your reviews of the movie", Toast.LENGTH_SHORT);
             toast.show();
