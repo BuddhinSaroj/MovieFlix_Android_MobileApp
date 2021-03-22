@@ -49,8 +49,6 @@ public class EditMovies extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 editMovie = (String) parent.getItemAtPosition(position);
-                System.out.println(editMovie);
-                System.out.println(position);
                 Intent intent = new Intent(EditMovies.this,EditingPage.class);
                 intent.putExtra("movie", editMovie);
                 startActivity(intent);

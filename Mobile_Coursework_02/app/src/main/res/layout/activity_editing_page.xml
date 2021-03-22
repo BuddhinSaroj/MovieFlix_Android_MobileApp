@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".EditingPage">
 
     <TextView
@@ -24,109 +25,183 @@
         app:layout_constraintVertical_bias="0.023" />
 
     <EditText
+        android:id="@+id/editTxtMovieTitle"
+        android:layout_width="201dp"
+        android:layout_height="43dp"
+        android:ems="10"
+        android:hint="@string/editTxtMovieTitle"
+        android:inputType="text"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.923"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.129" />
+
+    <TextView
+        android:id="@+id/reviews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bree_serif"
+        android:text="@string/review"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.035"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.725" />
+
+    <TextView
+        android:id="@+id/theYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bree_serif"
+        android:text="@string/theYear"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.24" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.654"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.888">
+
+
+        <RadioButton
+            android:id="@+id/fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/favourite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.945"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.872" />
+
+        <RadioButton
+            android:id="@+id/notFav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/not_favourite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.573"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.874" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/theDirector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bree_serif"
+        android:text="@string/theDirector"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.055"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.349" />
+
+    <EditText
         android:id="@+id/editTxtMovieActors"
-        android:layout_width="192dp"
-        android:layout_height="113dp"
+        android:layout_width="191dp"
+        android:layout_height="85dp"
         android:ems="10"
         android:hint="@string/editTxtMovieActors"
         android:inputType="text"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.89"
+        app:layout_constraintHorizontal_bias="0.881"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.577" />
+        app:layout_constraintVertical_bias="0.473" />
+
+    <TextView
+        android:id="@+id/favoritesTxtView"
+        android:layout_width="142dp"
+        android:layout_height="41dp"
+        android:fontFamily="@font/bree_serif"
+        android:text="@string/favTxtView"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.842" />
 
     <TextView
         android:id="@+id/listOfActors"
         android:layout_width="161dp"
         android:layout_height="51dp"
+        android:fontFamily="@font/bree_serif"
         android:text="@string/listOfActors"
-        android:fontFamily="@font/bree_serif"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="normal|bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.563" />
-
-    <TextView
-        android:id="@+id/theDirector"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/theDirector"
-        android:fontFamily="@font/bree_serif"
-        android:textSize="18sp"
-        android:textStyle="normal|bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.41" />
-
-    <EditText
-        android:id="@+id/editTxtMovieRatings"
-        android:layout_width="201dp"
-        android:layout_height="43dp"
-        android:ems="10"
-        android:hint="@string/ratingsLabel"
-        android:inputType="number"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.928"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.707" />
+        app:layout_constraintVertical_bias="0.482" />
 
     <TextView
         android:id="@+id/movieTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/bree_serif"
         android:text="@string/movieTitle"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="normal|bold"
-        android:fontFamily="@font/bree_serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.169" />
+        app:layout_constraintVertical_bias="0.134" />
 
     <EditText
-        android:id="@+id/editTxtMovieDirector"
-        android:layout_width="201dp"
-        android:layout_height="43dp"
+        android:id="@+id/editTxtMovieReviews"
+        android:layout_width="197dp"
+        android:layout_height="78dp"
         android:ems="10"
-        android:hint="@string/editTxtMovieDirector"
-        android:inputType="textPersonName"
+        android:hint="@string/editReview"
+        android:inputType="text"
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.928"
+        app:layout_constraintHorizontal_bias="0.901"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.411" />
-
-    <TextView
-        android:id="@+id/ratings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ratings"
-        android:fontFamily="@font/bree_serif"
-        android:textSize="18sp"
-        android:textStyle="normal|bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.037"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.7" />
+        app:layout_constraintVertical_bias="0.744" />
 
     <EditText
         android:id="@+id/editTxtMovieYear"
@@ -138,87 +213,77 @@
         android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.928"
+        app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.286" />
-
-    <EditText
-        android:id="@+id/editTxtMovieTitle"
-        android:layout_width="201dp"
-        android:layout_height="43dp"
-        android:ems="10"
-        android:hint="@string/editTxtMovieTitle"
-        android:inputType="text"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.928"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.164" />
-
-    <EditText
-        android:id="@+id/editTxtMovieReviews"
-        android:layout_width="201dp"
-        android:layout_height="43dp"
-        android:ems="10"
-        android:hint="@string/editReview"
-        android:inputType="text"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.933"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.815" />
+        app:layout_constraintVertical_bias="0.234" />
 
     <TextView
-        android:id="@+id/reviews"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/review"
+        android:id="@+id/ratings"
+        android:layout_width="96dp"
+        android:layout_height="29dp"
         android:fontFamily="@font/bree_serif"
+        android:text="@string/ratings"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="normal|bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.036"
+        app:layout_constraintHorizontal_bias="0.031"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
+        app:layout_constraintVertical_bias="0.575" />
 
-    <TextView
-        android:id="@+id/theYear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/theYear"
-        android:fontFamily="@font/bree_serif"
-        android:textSize="18sp"
-        android:textStyle="normal|bold"
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="474dp"
+        android:layout_height="49dp"
+        android:max="10"
+        android:numStars="10"
+        android:scaleX="0.7"
+        android:scaleY="0.7"
+        android:stepSize="1"
+        android:progressTint="#FFD700"
+        android:progressBackgroundTint="#b2beb5 "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintHorizontal_bias="0.682"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.288" />
+        app:layout_constraintVertical_bias="0.64" />
+
+    <EditText
+        android:id="@+id/editTxtMovieDirector"
+        android:layout_width="201dp"
+        android:layout_height="43dp"
+        android:ems="10"
+        android:hint="@string/editTxtMovieDirector"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.919"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.345" />
 
     <Button
         android:id="@+id/updateBtn"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_width="139dp"
+        android:layout_height="48dp"
         android:background="@drawable/button_shapes"
         android:fontFamily="@font/bree_serif"
         android:onClick="updateDb"
         android:text="@string/updateBtn"
+        android:textColorHighlight="#E91E63"
         android:textSize="20sp"
         android:textStyle="normal|bold"
-        app:backgroundTint="#009688"
+        app:backgroundTint="#3F51B5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintHorizontal_bias="0.436"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.956" />
+        app:layout_constraintVertical_bias="0.988" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

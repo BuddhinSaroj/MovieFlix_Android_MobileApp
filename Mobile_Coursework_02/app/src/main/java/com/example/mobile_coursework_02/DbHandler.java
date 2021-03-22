@@ -108,21 +108,28 @@ public class DbHandler extends SQLiteOpenHelper {
     }
 
     public Cursor getSingleMovie(String movie){
-        SQLiteDatabase db = getWritableDatabase();
+        SQLiteDatabase db = getReadableDatabase();
 
-        Cursor cursor = db.query(TABLE_NAME,new String[]{MOVIE_TITLE,MOVIE_YEAR,MOVIE_DIRECTOR,MOVIE_ACTORS, MOVIE_RATINGS,MOVIE_REVIEWS,FAVOURITES},
-                MOVIE_TITLE + "= ?",new String[]{String.valueOf(movie)}
-                ,null,null,null);
-
+        Cursor cursor = db.query(TABLE_NAME, FROM, MOVIE_TITLE+" =?", new String[]{movie}, null, null, null);
 
         return cursor;
-
     }
 
-    public void editMovie(int position){
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(FAVOURITES,1);
-        db.update(TABLE_NAME,values,MOVIE_TITLE+" =?",new String[]{String.valueOf(position)});
+    public int updateSingleMovie(Movies movies,String movie){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        System.out.println(movie);
+        ContentValues contentValues = new ContentValues();//structuring data and saved data in db
+        contentValues.put(MOVIE_TITLE,movies.getTitleOfTheMovie());//key value pairs
+        contentValues.put(MOVIE_YEAR,movies.getTheYear());
+        contentValues.put(MOVIE_DIRECTOR,movies.getTheDirector());
+        contentValues.put(MOVIE_ACTORS,movies.getListOfActors());
+        contentValues.put(MOVIE_RATINGS,movies.getRatings());
+        contentValues.put(MOVIE_REVIEWS,movies.getReview());
+        contentValues.put(FAVOURITES,movies.getFavourites());
+
+        int status = sqLiteDatabase.update(TABLE_NAME,contentValues,MOVIE_TITLE+" =?",new String[]{String.valueOf(movie)});
+
+        return status;
+
     }
 }

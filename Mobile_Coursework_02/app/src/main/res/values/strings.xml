@@ -29,4 +29,8 @@
     <string name="editBtn">Edit</string>
     <string name="updateBtn">Update</string>
     <string name="titleFive">Edit selected movie</string>
+    <string name="favTxtView">Favorites : </string>
+    <string name="favOrNotFav" />
+    <string name="favourite">Favourite</string>
+    <string name="not_favourite">Not Favourite</string>
 </resources>
