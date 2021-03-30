@@ -52,10 +52,9 @@ public class DisplayMovies extends AppCompatActivity {
 
     public void addFavourites(View view) {
         int x = 0;
-
-        SparseBooleanArray checked = listView.getCheckedItemPositions();//from StackOverFlow
-
+        //SparseBooleanArray checked = listView.getCheckedItemPositions();//from StackOverFlow
         for (int i = 0 ; i < listView.getCount() ; i++){
+            SparseBooleanArray checked = listView.getCheckedItemPositions();//from StackOverFlow
             if (checked.get(i)){
                 x++;
                 String movies = (String) listView.getItemAtPosition(i);//get checked movies positions from listView

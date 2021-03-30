@@ -9,6 +9,9 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DbHandler extends SQLiteOpenHelper {
 
     private static final int VERSION =5; //version is used to update and recreate database tables
@@ -131,5 +134,28 @@ public class DbHandler extends SQLiteOpenHelper {
 
         return status;
 
+    }
+
+    public List<Movies> search(String keyword) {
+        List<Movies> moviesList = null;
+        try {
+            SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+//            Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME + " where " + MOVIE_TITLE + " OR " + MOVIE_DIRECTOR + " OR " + MOVIE_ACTORS + " like ?", new String[] { "%" + keyword + "%" });
+            Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME + " where " + MOVIE_TITLE + " like ?"+ " OR " + MOVIE_DIRECTOR + " OR " + MOVIE_ACTORS + " like ?", new String[] { "%" + keyword + "%" });
+            if (cursor.moveToFirst()) {
+                moviesList = new ArrayList<Movies>();
+                do {
+                    Movies movies = new Movies();
+                    movies.setTitleOfTheMovie(cursor.getString(1));
+                    movies.setTheDirector(cursor.getString(3));
+                    movies.setListOfActors(cursor.getString(4));
+                    moviesList.add(movies);
+                } while (cursor.moveToNext());
+            }
+        } catch (Exception e) {
+            moviesList = null;
+        }
+        System.out.println("Movieeeees "+moviesList);
+        return moviesList;
     }
 }

@@ -33,4 +33,7 @@
     <string name="favOrNotFav" />
     <string name="favourite">Favourite</string>
     <string name="not_favourite">Not Favourite</string>
+    <string name="selectMovieTitle">Display All Movies</string>
+    <string name="imdbBtn">Find movies in IMDB</string>
+
 </resources>

@@ -15,7 +15,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class EditMovies extends AppCompatActivity {
+public class DisplayRatingMovies extends AppCompatActivity {
 
     DbHandler dbHandler = new DbHandler(this);
     ArrayList<String> arrayList =new ArrayList<>();
@@ -26,11 +26,12 @@ public class EditMovies extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_movies);
-        listView = findViewById(R.id.listView3);
+        setContentView(R.layout.activity_display_rating_movies);
+        listView = findViewById(R.id.dispalyMovieListView);
         cursor = dbHandler.displayAllMovies();
         viewData();
     }
+
     public void viewData(){
 
         if (cursor.getCount() == 0) {
@@ -43,16 +44,22 @@ public class EditMovies extends AppCompatActivity {
         //------------------ sort arrayList -------------------------------
         Collections.sort(arrayList);
         //------------------ set adapter ----------------------------------
-        ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayList);
+        ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_single_choice, arrayList);
         listView.setAdapter(listAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 editMovie = (String) parent.getItemAtPosition(position);
-                Intent intent = new Intent(EditMovies.this,EditingPage.class);
-                intent.putExtra("movie", editMovie);
-                startActivity(intent);
+//                Intent intent = new Intent(DisplayRatingMovies.this,Ratings.class);
+//                intent.putExtra("movie", editMovie);
+//                startActivity(intent);
             }
         });
+    }
+
+    public void IMDBbtn(View view) {
+        Intent intent = new Intent(DisplayRatingMovies.this,Ratings.class);
+        intent.putExtra("movie", editMovie);
+        startActivity(intent);
     }
 }

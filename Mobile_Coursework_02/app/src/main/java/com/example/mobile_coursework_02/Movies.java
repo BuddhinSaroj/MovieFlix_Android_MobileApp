@@ -10,6 +10,9 @@ public class Movies {
     private String review;
     private int Favourites;
 
+    public Movies() {
+    }
+
     public Movies(String titleOfTheMovie, String theYear, String theDirector, String listOfActors, String ratings, String review) {
         this.titleOfTheMovie = titleOfTheMovie;
         this.theYear = theYear;
@@ -102,5 +105,14 @@ public class Movies {
 
     public void setFavourites(int favourites) {
         Favourites = favourites;
+    }
+
+    @Override
+    public String toString() {
+        return "Movies{" +
+                "titleOfTheMovie='" + titleOfTheMovie + '\'' +
+                ", theDirector='" + theDirector + '\'' +
+                ", listOfActors='" + listOfActors + '\'' +
+                '}';
     }
 }

@@ -4,51 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".FavoriteMovies">
+    tools:context=".DisplayRatingMovies">
 
     <TextView
-        android:id="@+id/titleThree"
+        android:id="@+id/selectMovieTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/bree_serif"
-        android:text="@string/titleThree"
+        android:text="@string/selectMovieTitle"
         android:textColor="#9C27B0"
         android:textSize="36sp"
-        android:textStyle="normal|bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048" />
+        app:layout_constraintVertical_bias="0.074" />
 
     <ListView
-        android:id="@+id/listView"
-        android:layout_width="367dp"
-        android:layout_height="452dp"
-        android:choiceMode="multipleChoice"
-        android:focusable="auto"
+        android:id="@+id/dispalyMovieListView"
+        android:layout_width="382dp"
+        android:layout_height="458dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:choiceMode="singleChoice"
+        android:focusable="auto"
+        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintVertical_bias="0.531" />
 
     <Button
-        android:id="@+id/saveButton"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:id="@+id/imdbBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/button_shapes"
         android:fontFamily="@font/bree_serif"
-        android:onClick="removeFromFavourites"
-        android:text="@string/save"
-        android:textSize="20sp"
+        android:text="@string/imdbBtn"
+        android:textSize="16sp"
+        android:onClick="IMDBbtn"
         android:textStyle="normal|bold"
-        app:backgroundTint="#009688"
+        app:backgroundTint="#4CAF50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.928" />
+        app:layout_constraintVertical_bias="0.942" />
 </androidx.constraintlayout.widget.ConstraintLayout>

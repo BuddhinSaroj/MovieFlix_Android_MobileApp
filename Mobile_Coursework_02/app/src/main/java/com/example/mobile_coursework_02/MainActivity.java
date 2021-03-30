@@ -34,4 +34,14 @@ public class MainActivity extends AppCompatActivity {
         intent = new Intent(MainActivity.this,EditMovies.class);
         startActivity(intent);
     }
+
+    public void search(View view) {
+        intent = new Intent(MainActivity.this,SearchMovies.class);
+        startActivity(intent);
+    }
+
+    public void ratings(View view) {
+        intent = new Intent(MainActivity.this,DisplayRatingMovies.class);
+        startActivity(intent);
+    }
 }
