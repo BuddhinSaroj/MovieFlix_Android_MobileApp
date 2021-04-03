@@ -21,7 +21,7 @@ public class DisplayRatingMovies extends AppCompatActivity {
     ArrayList<String> arrayList =new ArrayList<>();
     private ListView listView;
     Cursor cursor;
-    String editMovie;
+    String moviesForIMDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class DisplayRatingMovies extends AppCompatActivity {
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                editMovie = (String) parent.getItemAtPosition(position);
+                moviesForIMDB = (String) parent.getItemAtPosition(position);
 //                Intent intent = new Intent(DisplayRatingMovies.this,Ratings.class);
 //                intent.putExtra("movie", editMovie);
 //                startActivity(intent);
@@ -59,7 +59,7 @@ public class DisplayRatingMovies extends AppCompatActivity {
 
     public void IMDBbtn(View view) {
         Intent intent = new Intent(DisplayRatingMovies.this,Ratings.class);
-        intent.putExtra("movie", editMovie);
+        intent.putExtra("movieForIMDB", moviesForIMDB);
         startActivity(intent);
     }
 }

@@ -136,26 +136,12 @@ public class DbHandler extends SQLiteOpenHelper {
 
     }
 
-    public List<Movies> search(String keyword) {
-        List<Movies> moviesList = null;
-        try {
+    public Cursor search(String keyword) {
+
             SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-//            Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME + " where " + MOVIE_TITLE + " OR " + MOVIE_DIRECTOR + " OR " + MOVIE_ACTORS + " like ?", new String[] { "%" + keyword + "%" });
-            Cursor cursor = sqLiteDatabase.rawQuery("select * from " + TABLE_NAME + " where " + MOVIE_TITLE + " like ?"+ " OR " + MOVIE_DIRECTOR + " OR " + MOVIE_ACTORS + " like ?", new String[] { "%" + keyword + "%" });
-            if (cursor.moveToFirst()) {
-                moviesList = new ArrayList<Movies>();
-                do {
-                    Movies movies = new Movies();
-                    movies.setTitleOfTheMovie(cursor.getString(1));
-                    movies.setTheDirector(cursor.getString(3));
-                    movies.setListOfActors(cursor.getString(4));
-                    moviesList.add(movies);
-                } while (cursor.moveToNext());
-            }
-        } catch (Exception e) {
-            moviesList = null;
-        }
-        System.out.println("Movieeeees "+moviesList);
-        return moviesList;
+            String query = "select " + MOVIE_TITLE + " from " + TABLE_NAME + " where " + MOVIE_TITLE + " LIKE ? OR " + MOVIE_DIRECTOR + " LIKE ? OR " + MOVIE_ACTORS + " LIKE ?;";
+            Cursor cursor = sqLiteDatabase.query(TABLE_NAME, FROM, MOVIE_TITLE + " LIKE ? OR "+MOVIE_DIRECTOR+" LIKE ? OR "+MOVIE_ACTORS+" LIKE ?", new String[]{"%"+keyword+"%","%"+keyword+"%","%"+keyword+"%"}, null, null, null);
+
+            return cursor;
     }
 }

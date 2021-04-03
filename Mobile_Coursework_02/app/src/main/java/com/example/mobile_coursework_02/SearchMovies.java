@@ -2,12 +2,14 @@ package com.example.mobile_coursework_02;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,13 +31,26 @@ public class SearchMovies extends AppCompatActivity {
 
     private void search(String keyword) {
 
-        List<Movies> movies = dbHandler.search(keyword);
-        //ArrayList<String> searched = new ArrayList<>();
-        //searched.add(movies);
-        if (movies != null) {
-            ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, movies);
-            listView.setAdapter(listAdapter);
+        ArrayList<Movies> moviesList = new ArrayList<>();
+        Cursor cursor = dbHandler.search(keyword);
+
+        try {
+            if (cursor != null && cursor.getCount() > 0) {
+                if (cursor.moveToFirst()) {
+                    do {
+                        Movies movies = new Movies();
+                        movies.setTitleOfTheMovie(cursor.getString(0));
+                        movies.setTheDirector(cursor.getString(2));
+                        movies.setListOfActors(cursor.getString(3));
+                        moviesList.add(movies);
+                    } while (cursor.moveToNext());
+                }
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+            moviesList = null;
         }
+        System.out.println(moviesList.toString());
     }
 
     public void search(View view) {
