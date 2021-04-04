@@ -9,6 +9,9 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,14 +29,17 @@ public class Ratings extends AppCompatActivity {
 
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
     String selectedMovie;
-    private String baseUrl = "https://imdb-api.com/en/API/SearchTitle/k_edbkosuq/Inception 2010";
+    private String baseUrl = "https://imdb-api.com/en/API/SearchTitle/k_c2qg4idl/Inception 2010";
     String id;
     String title;
     String description;
     private TextView textView;
     ArrayList<String> arrayListMovie = new ArrayList<>();
     ArrayList<String> arrayList = new ArrayList<>();
+    ArrayList<String> arrayListID = new ArrayList<>();
+    ArrayList<String> arrayListFinalResults = new ArrayList<>();
     int count;
+    ListView listView;
 
 
 
@@ -41,7 +47,8 @@ public class Ratings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ratings);
-        textView = findViewById(R.id.ratingTxt);
+        //textView = findViewById(R.id.ratingTxt);
+        listView = findViewById(R.id.listViewForImdB);
         Intent intent = getIntent();
         selectedMovie = intent.getStringExtra("movieForIMDB");
         System.out.println("Before onCreate()");
@@ -66,7 +73,7 @@ public class Ratings extends AppCompatActivity {
         }else
         {
             System.out.println("In getMoviesData()");
-            baseUrl = "https://imdb-api.com/en/API/SearchTitle/k_edbkosuq/"+selectedMovie;
+            baseUrl = "https://imdb-api.com/en/API/SearchTitle/k_c2qg4idl/"+selectedMovie;
             new getData().execute();
         }
     }
@@ -86,7 +93,6 @@ public class Ratings extends AppCompatActivity {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
 
                 String value = bufferedReader.readLine();
-                //Log.d(LOG_TAG,"the result is: "+value);
 
                 httpURLConnection.disconnect();
                 bufferedReader.close();
@@ -119,16 +125,13 @@ public class Ratings extends AppCompatActivity {
                     title = (String) resultsObj.get("title");
                     description = (String) resultsObj.get("description");
                     count++;
-                    String movieData = "The movie title : "+title + " "+ description;
+                    String movieData = "Movie title: "+title + " "+ description;
                     arrayListMovie.add(i,movieData);
-                    System.out.println("The movie id : "+id);
-                    System.out.println("The movie title : "+title);
-                    System.out.println("The movie description : "+description);
-                    new getRatingsFromImDb().execute(id);
-//                    Log.d(LOG_TAG,"The movie id : "+id);
-//                    Log.d(LOG_TAG,"The movie title : "+title);
-//                    Log.d(LOG_TAG,"The movie description : "+description);
+                    arrayListID.add(i,id);
+
                 }
+                System.out.println(arrayListID);
+                new getRatingsFromImDb().execute();
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -143,28 +146,32 @@ public class Ratings extends AppCompatActivity {
 
     public class getRatingsFromImDb extends AsyncTask<String,String,String>{
 
-        private String secondUrl = "https://imdb-api.com/en/API/Ratings/k_edbkosuq/"+id;
+        private String secondUrl = "https://imdb-api.com/en/API/UserRatings/k_c2qg4idl/"+id;
 
         @Override
         protected String doInBackground(String... strings) {
             try {
                 Log.d(LOG_TAG,"Inside second doInBackground()");
-
-                URL url1 = new URL(secondUrl);
-                HttpURLConnection httpURLConnection = (HttpURLConnection) url1.openConnection();
-                httpURLConnection.setRequestMethod("GET");
-                httpURLConnection.connect();
-
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
-
-                String value2 = bufferedReader.readLine();
-                //Log.d(LOG_TAG,"the result is: "+value2);
-
-                httpURLConnection.disconnect();
-                bufferedReader.close();
-
-                return value2;
-
+                HttpURLConnection httpURLConnection = null;
+                BufferedReader bufferedReader = null;
+                String value2 = null;
+                for (int i = 0 ; i<arrayListID.size() ; i++) {
+                    id = arrayListID.get(i);
+                    System.out.println(id);
+                    System.out.println(arrayListID.size());
+                    secondUrl = "https://imdb-api.com/en/API/UserRatings/k_c2qg4idl/" + id;
+                    URL url1 = new URL(secondUrl);
+                    httpURLConnection = (HttpURLConnection) url1.openConnection();
+                    httpURLConnection.setRequestMethod("GET");
+                    httpURLConnection.connect();
+                    bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+                    value2 = bufferedReader.readLine();
+                    httpURLConnection.disconnect();
+                    bufferedReader.close();
+                    JSONObject movieResults = (JSONObject) new JSONObject(value2);
+                    String imDbResult = movieResults.getString("totalRating");
+                    arrayList.add(i,imDbResult);
+                }return value2;
             }catch (Exception e) {
                 Log.d(LOG_TAG,"Error in do in background");
                 e.printStackTrace();
@@ -180,35 +187,15 @@ public class Ratings extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-
             try {
-                JSONObject movieResults = (JSONObject) new JSONObject(s);
+                System.out.println(arrayList);
+                for (int x = 0 ; x<arrayListID.size();x++){
+                    arrayListFinalResults.add(x,arrayListMovie.get(x)+"\nImDb Rating : "+arrayList.get(x));
+                }
 
-                String imDbResult = movieResults.getString("imDb");
-//                Log.d(LOG_TAG,"imDb : "+imDbResult);
-                arrayList.add(imDbResult);
-
-//                String imDbResult = movieResults.getString("imDb");
-//                Log.d(LOG_TAG,"imDb : "+imDbResult);
-//                Log.d(LOG_TAG,"The movie id : "+id);
-//                Log.d(LOG_TAG,"The movie title : "+title);
-//                Log.d(LOG_TAG,"imDb : "+imDbResult);
-//                Log.d(LOG_TAG,"The movie description : "+description);
-                //String finalData = "The movie title : "+title + " "+ description + " imDb : "+imDbResult+"\n";
-
-//                arrayList.add(imDbResult);
-
-                //textView.setText("The movie title : "+title + " "+ description + " imDb : "+imDbResult);
-
-
-            } catch (JSONException e) {
+                arrayAd();
+            } catch (Exception e) {
                 e.printStackTrace();
-            }
-            //textView.setText(arrayList.toString());
-            for (int x = 0 ; x<arrayList.size() ; x++){
-                textView.setText("Movie " + x + ": "+ arrayList.get(x).toString());
-                //Log.d(LOG_TAG,"Movie : " + x + ": "+ arrayList.get(x));
-                System.out.println("Movie : " + x + ": "+ arrayList.get(x));
             }
         }
 
@@ -216,5 +203,9 @@ public class Ratings extends AppCompatActivity {
         protected void onProgressUpdate(String... values) {
             super.onProgressUpdate(values);
         }
+    }
+    public void arrayAd(){
+        ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayListFinalResults);
+        listView.setAdapter(listAdapter);
     }
 }

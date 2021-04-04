@@ -28,7 +28,6 @@ public class SearchMovies extends AppCompatActivity {
         editText = findViewById(R.id.searchField);
     }
 
-
     private void search(String keyword) {
 
         ArrayList<Movies> moviesList = new ArrayList<>();
@@ -38,6 +37,7 @@ public class SearchMovies extends AppCompatActivity {
             if (cursor != null && cursor.getCount() > 0) {
                 if (cursor.moveToFirst()) {
                     do {
+                        //from stackOverFlow
                         Movies movies = new Movies();
                         movies.setTitleOfTheMovie(cursor.getString(0));
                         movies.setTheDirector(cursor.getString(2));
@@ -51,6 +51,8 @@ public class SearchMovies extends AppCompatActivity {
             moviesList = null;
         }
         System.out.println(moviesList.toString());
+        ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, moviesList);
+        listView.setAdapter(listAdapter);
     }
 
     public void search(View view) {

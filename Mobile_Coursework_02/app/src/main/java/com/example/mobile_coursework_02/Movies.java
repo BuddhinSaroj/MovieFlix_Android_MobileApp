@@ -109,10 +109,9 @@ public class Movies {
 
     @Override
     public String toString() {
-        return "Movies{" +
-                "titleOfTheMovie='" + titleOfTheMovie + '\'' +
-                ", theDirector='" + theDirector + '\'' +
-                ", listOfActors='" + listOfActors + '\'' +
-                '}';
+        return "\n" +
+                "Movie Title = " + titleOfTheMovie + '\n' +
+                "Movie Director = " + theDirector + '\n' +
+                "List of actors = " + listOfActors ;
     }
 }

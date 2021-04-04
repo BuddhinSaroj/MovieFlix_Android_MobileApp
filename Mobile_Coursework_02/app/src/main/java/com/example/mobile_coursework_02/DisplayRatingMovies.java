@@ -50,9 +50,6 @@ public class DisplayRatingMovies extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 moviesForIMDB = (String) parent.getItemAtPosition(position);
-//                Intent intent = new Intent(DisplayRatingMovies.this,Ratings.class);
-//                intent.putExtra("movie", editMovie);
-//                startActivity(intent);
             }
         });
     }
