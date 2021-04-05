@@ -9,6 +9,8 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -29,16 +31,16 @@ public class Ratings extends AppCompatActivity {
 
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
     String selectedMovie;
-    private String baseUrl = "https://imdb-api.com/en/API/SearchTitle/k_c2qg4idl/Inception 2010";
+    private String baseUrl = "https://imdb-api.com/en/API/SearchTitle/k_pnsw08gu/Inception 2010";
     String id;
     String title;
     String description;
-    private TextView textView;
-    ArrayList<String> arrayListMovie = new ArrayList<>();
-    ArrayList<String> arrayList = new ArrayList<>();
-    ArrayList<String> arrayListID = new ArrayList<>();
+    String imageUrls;
+    ArrayList<String> movieList = new ArrayList<>();
+    ArrayList<String> imDbArrayList = new ArrayList<>();
+    ArrayList<String> moviesId = new ArrayList<>();
+    ArrayList<String> imageUrlArrayList = new ArrayList<>();
     ArrayList<String> arrayListFinalResults = new ArrayList<>();
-    int count;
     ListView listView;
 
 
@@ -59,10 +61,10 @@ public class Ratings extends AppCompatActivity {
         ConnectivityManager connMgr = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
-            Log.d(LOG_TAG, "internet connected ");
+            Log.d(LOG_TAG, "Internet connected ");
             return true;
         } else {
-            Log.d(LOG_TAG, "internet not connected ");
+            Log.d(LOG_TAG, "Internet not connected ");
             return false;
         }
     }
@@ -73,7 +75,7 @@ public class Ratings extends AppCompatActivity {
         }else
         {
             System.out.println("In getMoviesData()");
-            baseUrl = "https://imdb-api.com/en/API/SearchTitle/k_c2qg4idl/"+selectedMovie;
+            baseUrl = "https://imdb-api.com/en/API/SearchTitle/k_pnsw08gu/"+selectedMovie;
             new getData().execute();
         }
     }
@@ -124,13 +126,14 @@ public class Ratings extends AppCompatActivity {
                     id = (String) resultsObj.get("id");
                     title = (String) resultsObj.get("title");
                     description = (String) resultsObj.get("description");
-                    count++;
+                    imageUrls = (String) resultsObj.get("image");
                     String movieData = "Movie title: "+title + " "+ description;
-                    arrayListMovie.add(i,movieData);
-                    arrayListID.add(i,id);
+                    movieList.add(i,movieData);
+                    moviesId.add(i,id);
+                    imageUrlArrayList.add(i,imageUrls);
 
                 }
-                System.out.println(arrayListID);
+                System.out.println(moviesId);
                 new getRatingsFromImDb().execute();
 
             } catch (JSONException e) {
@@ -146,7 +149,7 @@ public class Ratings extends AppCompatActivity {
 
     public class getRatingsFromImDb extends AsyncTask<String,String,String>{
 
-        private String secondUrl = "https://imdb-api.com/en/API/UserRatings/k_c2qg4idl/"+id;
+        private String secondUrl = "https://imdb-api.com/en/API/UserRatings/k_pnsw08gu/"+id;
 
         @Override
         protected String doInBackground(String... strings) {
@@ -155,11 +158,11 @@ public class Ratings extends AppCompatActivity {
                 HttpURLConnection httpURLConnection = null;
                 BufferedReader bufferedReader = null;
                 String value2 = null;
-                for (int i = 0 ; i<arrayListID.size() ; i++) {
-                    id = arrayListID.get(i);
+                for (int i = 0; i< moviesId.size() ; i++) {
+                    id = moviesId.get(i);
                     System.out.println(id);
-                    System.out.println(arrayListID.size());
-                    secondUrl = "https://imdb-api.com/en/API/UserRatings/k_c2qg4idl/" + id;
+                    System.out.println(moviesId.size());
+                    secondUrl = "https://imdb-api.com/en/API/UserRatings/k_pnsw08gu/" + id;
                     URL url1 = new URL(secondUrl);
                     httpURLConnection = (HttpURLConnection) url1.openConnection();
                     httpURLConnection.setRequestMethod("GET");
@@ -170,7 +173,7 @@ public class Ratings extends AppCompatActivity {
                     bufferedReader.close();
                     JSONObject movieResults = (JSONObject) new JSONObject(value2);
                     String imDbResult = movieResults.getString("totalRating");
-                    arrayList.add(i,imDbResult);
+                    imDbArrayList.add(i,imDbResult);
                 }return value2;
             }catch (Exception e) {
                 Log.d(LOG_TAG,"Error in do in background");
@@ -188,9 +191,9 @@ public class Ratings extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             try {
-                System.out.println(arrayList);
-                for (int x = 0 ; x<arrayListID.size();x++){
-                    arrayListFinalResults.add(x,arrayListMovie.get(x)+"\nImDb Rating : "+arrayList.get(x));
+                System.out.println(imDbArrayList);
+                for (int x = 0; x< moviesId.size(); x++){
+                    arrayListFinalResults.add(x, movieList.get(x)+"\nImDb Rating : "+ imDbArrayList.get(x));
                 }
 
                 arrayAd();
@@ -205,7 +208,19 @@ public class Ratings extends AppCompatActivity {
         }
     }
     public void arrayAd(){
-        ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayListFinalResults);
+        ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_single_choice, arrayListFinalResults);
+
         listView.setAdapter(listAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                System.out.println(position);
+                String url = imageUrlArrayList.get(position);
+                System.out.println(url);
+                Intent intent = new Intent(Ratings.this,RatingImageView.class);
+                intent.putExtra("urlForImg", url);
+                startActivity(intent);
+            }
+        });
     }
 }
