@@ -29,7 +29,6 @@ public class DbHandler extends SQLiteOpenHelper {
     public static final String FAVOURITES = "Favourites";
 
     private static String [] FROM = { /*ID ,*/ MOVIE_TITLE , MOVIE_YEAR , MOVIE_DIRECTOR , MOVIE_ACTORS,MOVIE_RATINGS,MOVIE_REVIEWS,FAVOURITES};
-    private static String ORDER_BY = /*ID +*/ " DESC ";
 
     public DbHandler(@Nullable Context context) {
         super(context, DB_NAME, null, VERSION);
@@ -75,6 +74,20 @@ public class DbHandler extends SQLiteOpenHelper {
         //save to table
         sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
         //sqLiteDatabase.close();
+    }
+
+    public Cursor userChecking(String username){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+//        String selectQuery = "SELECT * FROM TABLE_NAME where MOVIE_TITLE= "+username  ;
+//
+//        Cursor c = db.rawQuery(selectQuery, null);
+
+        String query = "select " + MOVIE_TITLE + " from " + TABLE_NAME + " where " + MOVIE_TITLE +" LIKE ?;";
+        Cursor cursor = db.query(TABLE_NAME, FROM, MOVIE_TITLE + " LIKE ?", new String[]{"%"+username+"%"}, null, null, null);
+
+
+        return  cursor;
     }
 
     public Cursor displayAllMovies(){

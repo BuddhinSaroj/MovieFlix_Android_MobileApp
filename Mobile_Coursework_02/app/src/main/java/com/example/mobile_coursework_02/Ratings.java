@@ -208,7 +208,7 @@ public class Ratings extends AppCompatActivity {
         }
     }
     public void arrayAd(){
-        ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_single_choice, arrayListFinalResults);
+        ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayListFinalResults);
 
         listView.setAdapter(listAdapter);
 

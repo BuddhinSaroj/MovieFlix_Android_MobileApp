@@ -36,5 +36,6 @@
     <string name="selectMovieTitle">Display All Movies</string>
     <string name="imdbBtn">Find movies in IMDB</string>
     <string name="imdbRating"></string>
+    <string name="imgView">Movie Image</string>
 
 </resources>

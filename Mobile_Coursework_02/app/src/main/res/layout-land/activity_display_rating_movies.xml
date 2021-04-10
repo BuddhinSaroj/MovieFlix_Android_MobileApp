@@ -4,8 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/bg_landscape"
     tools:context=".DisplayRatingMovies">
+
+    <ListView
+        android:id="@+id/dispalyMovieListView"
+        android:layout_width="358dp"
+        android:layout_height="229dp"
+        android:choiceMode="singleChoice"
+        android:focusable="auto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.774"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.565" />
 
     <TextView
         android:id="@+id/selectMovieTitle"
@@ -17,21 +30,10 @@
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.739"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.074" />
-
-    <ListView
-        android:id="@+id/dispalyMovieListView"
-        android:layout_width="387dp"
-        android:layout_height="362dp"
-        android:choiceMode="singleChoice"
-        android:focusable="auto"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.439" />
 
     <Button
         android:id="@+id/imdbBtn"
@@ -39,13 +41,14 @@
         android:layout_height="wrap_content"
         android:background="@drawable/button_shapes"
         android:fontFamily="@font/bree_serif"
+        android:onClick="IMDBbtn"
         android:text="@string/imdbBtn"
         android:textSize="16sp"
-        android:onClick="IMDBbtn"
         android:textStyle="normal|bold"
         app:backgroundTint="#4CAF50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.942" />

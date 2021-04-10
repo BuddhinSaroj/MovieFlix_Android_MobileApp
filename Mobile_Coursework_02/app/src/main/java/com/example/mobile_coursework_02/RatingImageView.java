@@ -49,7 +49,7 @@ public class RatingImageView extends AppCompatActivity {
                 connection.setDoInput(true);
                 connection.connect();
                 InputStream input = connection.getInputStream();
-                Bitmap myBitmap = BitmapFactory.decodeStream(input);
+                Bitmap myBitmap = BitmapFactory.decodeStream(input);//from stackOverFlow
                 return myBitmap;
             } catch (Exception e) {
                 e.printStackTrace();
