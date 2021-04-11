@@ -37,5 +37,6 @@
     <string name="imdbBtn">Find movies in IMDB</string>
     <string name="imdbRating"></string>
     <string name="imgView">Movie Image</string>
+    <string name="wait">Please Wait......</string>
 
 </resources>

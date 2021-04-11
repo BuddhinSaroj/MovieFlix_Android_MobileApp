@@ -30,18 +30,15 @@ import java.util.ArrayList;
 public class Ratings extends AppCompatActivity {
 
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
-    String selectedMovie;
     private String baseUrl = "https://imdb-api.com/en/API/SearchTitle/k_pnsw08gu/Inception 2010";
-    String id;
-    String title;
-    String description;
-    String imageUrls;
+    private String id,title,description,imageUrls,selectedMovie;
     ArrayList<String> movieList = new ArrayList<>();
     ArrayList<String> imDbArrayList = new ArrayList<>();
     ArrayList<String> moviesId = new ArrayList<>();
     ArrayList<String> imageUrlArrayList = new ArrayList<>();
     ArrayList<String> arrayListFinalResults = new ArrayList<>();
-    ListView listView;
+    private ListView listView;
+    private TextView textView;
 
 
 
@@ -49,7 +46,7 @@ public class Ratings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ratings);
-        //textView = findViewById(R.id.ratingTxt);
+        textView = findViewById(R.id.wait2);
         listView = findViewById(R.id.listViewForImdB);
         Intent intent = getIntent();
         selectedMovie = intent.getStringExtra("movieForIMDB");
@@ -196,7 +193,8 @@ public class Ratings extends AppCompatActivity {
                     arrayListFinalResults.add(x, movieList.get(x)+"\nImDb Rating : "+ imDbArrayList.get(x));
                 }
 
-                arrayAd();
+                addToArray();
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -207,11 +205,11 @@ public class Ratings extends AppCompatActivity {
             super.onProgressUpdate(values);
         }
     }
-    public void arrayAd(){
+    public void addToArray(){
         ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arrayListFinalResults);
 
         listView.setAdapter(listAdapter);
-
+        textView.setText("");
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 System.out.println(position);

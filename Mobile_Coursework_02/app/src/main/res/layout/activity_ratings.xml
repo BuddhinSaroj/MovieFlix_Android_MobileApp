@@ -14,9 +14,20 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="@font/bree_serif"
+        android:gravity="center"
         android:text="@string/ratings"
         android:textColor="#9C27B0"
         android:textSize="36sp"
+        android:textStyle="normal|bold" />
+
+    <TextView
+        android:id="@+id/wait2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/bree_serif"
+        android:gravity="center"
+        android:text="@string/wait"
+        android:textSize="20sp"
         android:textStyle="normal|bold" />
 
     <LinearLayout

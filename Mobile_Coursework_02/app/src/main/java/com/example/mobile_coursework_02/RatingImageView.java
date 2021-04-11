@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -22,11 +23,14 @@ import java.net.URL;
 public class RatingImageView extends AppCompatActivity {
     private ImageView imageView;
     String url ;
+    TextView textView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating_image_view);
         imageView = findViewById(R.id.imageView);
+        textView = findViewById(R.id.wait);
         Intent intent = getIntent();
         url = intent.getStringExtra("urlForImg");
         new ImageLoadTask(url, imageView).execute();
@@ -61,6 +65,7 @@ public class RatingImageView extends AppCompatActivity {
         protected void onPostExecute(Bitmap result) {
             super.onPostExecute(result);
             imageView.setImageBitmap(result);
+            textView.setText("");
         }
 
     }
