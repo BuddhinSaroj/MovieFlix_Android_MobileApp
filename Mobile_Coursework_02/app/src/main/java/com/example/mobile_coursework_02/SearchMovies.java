@@ -50,9 +50,15 @@ public class SearchMovies extends AppCompatActivity {
             e.printStackTrace();
             moviesList = null;
         }
-        System.out.println(moviesList.toString());
-        ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, moviesList);
-        listView.setAdapter(listAdapter);
+        if (moviesList.size() != 0){
+            System.out.println(moviesList.toString());
+            ListAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, moviesList);
+            listView.setAdapter(listAdapter);
+        }else {
+            Toast.makeText(this, "NO DATA AVAILABLE", Toast.LENGTH_LONG).show();
+            return;
+        }
+
     }
 
     public void search(View view) {

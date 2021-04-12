@@ -31,14 +31,15 @@ public class Ratings extends AppCompatActivity {
 
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
     private String baseUrl = "https://imdb-api.com/en/API/SearchTitle/k_pnsw08gu/Inception 2010";
-    private String id,title,description,imageUrls,selectedMovie;
+    String id,title,description,selectedMovie;
+    String imageUrls;
     ArrayList<String> movieList = new ArrayList<>();
     ArrayList<String> imDbArrayList = new ArrayList<>();
     ArrayList<String> moviesId = new ArrayList<>();
-    ArrayList<String> imageUrlArrayList = new ArrayList<>();
+    ArrayList<String> imageUrlArrayList= new ArrayList<>();
     ArrayList<String> arrayListFinalResults = new ArrayList<>();
-    private ListView listView;
-    private TextView textView;
+    ListView listView;
+    TextView textView;
 
 
 
